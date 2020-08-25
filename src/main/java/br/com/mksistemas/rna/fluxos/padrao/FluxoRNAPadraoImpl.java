@@ -11,7 +11,6 @@ public class FluxoRNAPadraoImpl<TRequisicao, TResposta, TContexto> implements IF
 	private final ICriarContexto<TContexto, TRequisicao> criarContexto;
 	private final IExecutarRegraDeNegocio<TContexto> executarRegraDeNegocio;
 	private final IPersistir<TContexto> persistir;
-	private final ITratarExcecao<TContexto> tratarExcecao;
 	private final IRetornarResposta<TContexto, TResposta, TRequisicao> retornarResposta;
 
 	public FluxoRNAPadraoImpl(
@@ -19,13 +18,11 @@ public class FluxoRNAPadraoImpl<TRequisicao, TResposta, TContexto> implements IF
 			final ICriarContexto<TContexto, TRequisicao> criarContexto,
 			final IExecutarRegraDeNegocio<TContexto> executarRegraDeNegocio,
 			final IPersistir<TContexto> persistir,
-			final ITratarExcecao<TContexto> tratarExcecao,
 			final IRetornarResposta<TContexto, TResposta, TRequisicao> retornarResposta) {
 		this.validarRequisicao = validarRequisicao;
 		this.criarContexto = criarContexto; 
 		this.executarRegraDeNegocio = executarRegraDeNegocio;
 		this.persistir = persistir;
-		this.tratarExcecao = tratarExcecao;
 		this.retornarResposta = retornarResposta;
 	}
 	
@@ -34,8 +31,8 @@ public class FluxoRNAPadraoImpl<TRequisicao, TResposta, TContexto> implements IF
 		consumidor.accept(Trying.<RespostaRequisicao, TRequisicao>createSuccess(requisicao)
 				.bind(this::validarRequisicaoFluxo)
 				.map(this::criarContextoFluxo)
-				.onException(this::executarRegraDeNegocioFluxo, this::tratarExcecaoRegraDeNegocioFluxo)
-				.onException(this::persistirFluxo, this::tratarExcecaoPersistenciaFluxo)
+				.bind(this::executarRegraDeNegocioFluxo)
+				.bind(this::persistirFluxo)
 				.match(failure -> retornarResposta.executar(failure, requisicao),
 						success -> retornarResposta.executar(success)));
 	}
@@ -57,13 +54,5 @@ public class FluxoRNAPadraoImpl<TRequisicao, TResposta, TContexto> implements IF
 	private Trying<RespostaRequisicao, TContexto> persistirFluxo(TContexto contexto) {
 		var resposta = persistir.executar(contexto);
 		return (resposta.isEmpty()) ? Trying.createSuccess(contexto) : Trying.createFailure(resposta.get());
-	}
-
-	private Trying<RespostaRequisicao, TContexto> tratarExcecaoRegraDeNegocioFluxo(TContexto contexto, Exception e) {
-		return Trying.createFailure(tratarExcecao.executarNaRegraDeNegocio(contexto, e));
-	}
-
-	private Trying<RespostaRequisicao, TContexto> tratarExcecaoPersistenciaFluxo(TContexto contexto, Exception e) {
-		return Trying.createFailure(tratarExcecao.executarNaPersistencia(contexto, e));
 	}
 }

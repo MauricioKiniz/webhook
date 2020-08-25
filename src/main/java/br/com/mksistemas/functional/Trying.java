@@ -60,7 +60,7 @@ public class Trying<TFailure, TSuccess> {
 	}
 
 	public Trying<TFailure, TSuccess> onException(Function<TSuccess, Trying<TFailure, TSuccess>> func,
-			BiFunction<TSuccess, Exception, Trying<TFailure, TSuccess>> funcException) {
+			BiFunction<TSuccess, Throwable, Trying<TFailure, TSuccess>> funcException) {
 		try {
 			return bind(func);
 		} catch (Exception e) {

@@ -12,7 +12,6 @@ import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaContexto;
 import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaRequisicao;
 import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaResposta;
 import br.com.mksistemas.rna.empresa.registrar.RetornarRespostaRegistrarEmpresaImpl;
-import br.com.mksistemas.rna.empresa.registrar.TratarExcecaoRegistrarEmpresaImpl;
 import br.com.mksistemas.rna.empresa.registrar.ValidarRequisicaoRegistrarEmpresaImpl;
 import br.com.mksistemas.rna.fluxos.padrao.FluxoRNAPadraoImpl;
 import br.com.mksistemas.rna.fluxos.padrao.ICriarContexto;
@@ -20,7 +19,6 @@ import br.com.mksistemas.rna.fluxos.padrao.IExecutarRegraDeNegocio;
 import br.com.mksistemas.rna.fluxos.padrao.IFluxoRNAPadrao;
 import br.com.mksistemas.rna.fluxos.padrao.IPersistir;
 import br.com.mksistemas.rna.fluxos.padrao.IRetornarResposta;
-import br.com.mksistemas.rna.fluxos.padrao.ITratarExcecao;
 import br.com.mksistemas.rna.fluxos.padrao.IValidarRequisicao;
 
 @Configuration
@@ -28,14 +26,14 @@ public class RegistrarEmpresaConfiguration {
 
 	@Bean
 	@Scope("prototype")
-	public IFluxoRNAPadrao<RegistrarEmpresaRequisicao, RegistrarEmpresaResposta, RegistrarEmpresaContexto> registrarEmpresa(
+	public IFluxoRNAPadrao<RegistrarEmpresaRequisicao, RegistrarEmpresaResposta, RegistrarEmpresaContexto> getRegistrarEmpresa(
 			IValidarRequisicao<RegistrarEmpresaRequisicao> validarRequisicao,
 			ICriarContexto<RegistrarEmpresaContexto, RegistrarEmpresaRequisicao> criarContexto,
 			IExecutarRegraDeNegocio<RegistrarEmpresaContexto> executarRegraDeNegocio,
-			IPersistir<RegistrarEmpresaContexto> persistir, ITratarExcecao<RegistrarEmpresaContexto> tratarExcecao,
+			IPersistir<RegistrarEmpresaContexto> persistir,
 			IRetornarResposta<RegistrarEmpresaContexto, RegistrarEmpresaResposta, RegistrarEmpresaRequisicao> retornarResposta) {
 		return new FluxoRNAPadraoImpl<RegistrarEmpresaRequisicao, RegistrarEmpresaResposta, RegistrarEmpresaContexto>(
-				validarRequisicao, criarContexto, executarRegraDeNegocio, persistir, tratarExcecao, retornarResposta);
+				validarRequisicao, criarContexto, executarRegraDeNegocio, persistir, retornarResposta);
 	}
 
 	@Bean
@@ -62,12 +60,6 @@ public class RegistrarEmpresaConfiguration {
 	public IPersistir<RegistrarEmpresaContexto> getRegistrarEmpresaPersistir(
 			IRegistrarEmpresaPersistencia persistencia) {
 		return new PersistirRegistroEmpresaImpl(persistencia);
-	}
-
-	@Bean
-	@Scope("prototype")
-	public ITratarExcecao<RegistrarEmpresaContexto> getRegistrarEmpresaTratarExcecao() {
-		return new TratarExcecaoRegistrarEmpresaImpl();
 	}
 
 	@Bean

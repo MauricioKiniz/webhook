@@ -8,8 +8,9 @@ public enum MensagensDeResposta {
 	CnpjInvalido(1003, "Cnpj: %s inválido"),
 	EmpresaJaExiste(2000, "Empresa ja existe"),
 	ExcecaoNaPersistencia(3000, "Ocorreu uma exceção ao persistir informação. Erro: %s"),
-	ExcecaoNaExecucaoRegrasDeNegocio(3001, "Ocorreu uma exceção ao persistir informação. Erro: %s");
-
+	ExcecaoNaExecucaoRegrasDeNegocio(3001, "Ocorreu uma exceção ao persistir informação. Erro: %s"),
+	ErroNaoEsperado(9999, "Erro nao esperado");
+	
 	private final int codigo;
 	private final String mensagem;
 	
