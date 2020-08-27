@@ -27,8 +27,7 @@ public class EmpresaController {
 
 	@PostMapping("/api/registrarempresa")
 	public RegistrarEmpresaRespostaView registrarEmpresa(@RequestBody RegistrarEmpresaCommand command) {
-
-		RegistrarEmpresaRequisicao requisicao = mapper.map(command, RegistrarEmpresaRequisicao.class);
+		RegistrarEmpresaRequisicao requisicao = (command == null) ? null : mapper.map(command, RegistrarEmpresaRequisicao.class);
 		registrarEmpresa.processar(requisicao,
 				resposta -> resultado = mapper.map(resposta, RegistrarEmpresaRespostaView.class));
 		return resultado;

@@ -19,7 +19,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mksistemas.webhook.MksistemaswebhookApplication;
 
 import br.com.mksistemas.base.negocio.MensagensDeResposta;
-import br.com.mksistemas.base.negocio.RespostaRequisicao;
 import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaContexto;
 import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaRequisicao;
 import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaResposta;
@@ -44,16 +43,13 @@ class EmpresaControllerIntegrationTest {
 	}
 
 	@Test
-	void testRegistrarEmpresa() throws Exception {
+	void testRegistrarEmpresaCorreta() throws Exception {
 		RegistrarEmpresaCommand command = new RegistrarEmpresaCommand();
 		command.setId(UUID.randomUUID());
 		command.setNome("Empresa Teste");
 		command.setCnpj(46388366000180l);
 
 		var jsonData = jsonMapper.writeValueAsString(command);
-
-		RegistrarEmpresaResposta respostax = new RegistrarEmpresaResposta(
-				RespostaRequisicao.criar(MensagensDeResposta.ProcessamentoValido));
 
 		var result = mvc
 			.perform(post("/api/registrarempresa")
@@ -65,6 +61,21 @@ class EmpresaControllerIntegrationTest {
 		jsonData = result.getResponse().getContentAsString();
 		var resposta = jsonMapper.readValue(jsonData, RegistrarEmpresaRespostaView.class);
 		assertEquals(MensagensDeResposta.ProcessamentoValido.getCodigo(), resposta.getResposta().getCodigo());
+	}
+	
+	@Test
+	void testRegistrarEmpresaIncorreta() throws Exception {
+		String jsonData = "{}";
+		var result = mvc
+			.perform(post("/api/registrarempresa")
+			.content(jsonData)
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())
+			.andReturn();
+		
+		jsonData = result.getResponse().getContentAsString();
+		var resposta = jsonMapper.readValue(jsonData, RegistrarEmpresaRespostaView.class);
+		assertEquals(MensagensDeResposta.IdentificadorInvalido.getCodigo(), resposta.getResposta().getCodigo());
 	}
 
 }

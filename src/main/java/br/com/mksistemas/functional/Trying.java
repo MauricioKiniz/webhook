@@ -59,6 +59,10 @@ public class Trying<TFailure, TSuccess> {
 		return isSuccess ? func.apply(success) : this;
 	}
 
+	public <TData> Trying<TFailure, TSuccess> bind(BiFunction<TSuccess, TData , Trying<TFailure, TSuccess>> func, TData data) {
+		return isSuccess ? func.apply(success, data) : this;
+	}
+	
 	public Trying<TFailure, TSuccess> onException(Function<TSuccess, Trying<TFailure, TSuccess>> func,
 			BiFunction<TSuccess, Throwable, Trying<TFailure, TSuccess>> funcException) {
 		try {
