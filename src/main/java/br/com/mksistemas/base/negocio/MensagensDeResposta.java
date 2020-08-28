@@ -9,6 +9,8 @@ public enum MensagensDeResposta {
 	DescricaoInvalida(1004, "Descricao não pode ser vazia"),
 	DataValidadedoTicketInvalida(1005, "Data de validade do Ticket deve ser maior do que a data atual e não pode ser nula"),
 	EmpresaJaExiste(2000, "Empresa ja existe"),
+	EmpresaNaoExiste(2001, "Empresa não existe"),
+	TicketJaExistente(2002,"Ticket ja existe"),
 	ExcecaoNaPersistencia(3000, "Ocorreu uma exceção ao persistir informação. Erro: %s"),
 	ExcecaoNaExecucaoRegrasDeNegocio(3001, "Ocorreu uma exceção ao persistir informação. Erro: %s"),
 	ErroNaoEsperado(9999, "Erro nao esperado");

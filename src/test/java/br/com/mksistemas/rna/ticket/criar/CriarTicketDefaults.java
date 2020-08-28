@@ -11,9 +11,10 @@ public class CriarTicketDefaults implements ICriacaoDefaults<CriarTicketRequisic
 
 	private static final UUID empresaId = UUID.fromString("06193baa-7286-427c-91f0-123eab9bb2db");
 	private static final UUID ticketId = UUID.fromString("16193baa-7286-427c-91f0-123eab9bb2cc");
+	private CriarTicketRequisicao requisicao;
 
 	public CriarTicketRequisicao getRequisicaoDefault() {
-		var requisicao = new CriarTicketRequisicao();
+		requisicao = new CriarTicketRequisicao();
 		requisicao.setEmpresaId(empresaId);
 		requisicao.setNome("Ticket teste");
 		requisicao.setDescricao("Ticket de teste da aplicacao");
@@ -26,7 +27,7 @@ public class CriarTicketDefaults implements ICriacaoDefaults<CriarTicketRequisic
 	}
 
 	public CriarTicketContexto getContextoDefault() {
-		return new CriarTicketContexto();
+		return new CriarTicketContexto(requisicao);
 	}
 
 }

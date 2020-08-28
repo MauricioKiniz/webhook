@@ -6,7 +6,7 @@ public class CriarTicketCriarContextoImpl implements ICriarContexto<CriarTicketC
 
 	@Override
 	public CriarTicketContexto executar(CriarTicketRequisicao requisicao) {
-		return new CriarTicketContexto();
+		return new CriarTicketContexto(requisicao);
 	}
 
 }

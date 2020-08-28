@@ -2,17 +2,14 @@ package br.com.mksistemas.rna.ticket.criar.regranegocio;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import br.com.mksistemas.rna.ticket.criar.CriarTicketContexto;
-import br.com.mksistemas.rna.ticket.criar.CriarTicketRequisicao;
-import br.com.mksistemas.rna.ticket.criar.CriarTicketResposta;
-import br.com.mksistemas.rna.validacoes.ExecutarRegraNegocioBaseTest;
+import org.mockito.Mockito;
 
 
-public class ExecutarRegraNegocioCorreta extends 
-	ExecutarRegraNegocioBaseTest<CriarTicketRequisicao, CriarTicketResposta, CriarTicketContexto> {
+public class ExecutarRegraNegocioCorreta extends CriarTicketExecutarRegraNegocioBase {
 
 	@Override
 	protected void when() {
+		Mockito.when(ticketPersistenciaMock.EmpresaExiste(requisicao.getEmpresaId())).thenReturn(true);
 	}
 
 	@Override

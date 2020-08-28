@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-import br.com.mksistemas.rna.empresa.registrar.CriacaoContextoRegistrarEmpresaImpl;
 import br.com.mksistemas.rna.fluxos.padrao.FluxoRNAPadraoImpl;
 import br.com.mksistemas.rna.fluxos.padrao.ICriarContexto;
 import br.com.mksistemas.rna.fluxos.padrao.IExecutarRegraDeNegocio;
@@ -18,6 +17,7 @@ import br.com.mksistemas.rna.ticket.criar.CriarTicketExecucaoRegraNegocioImpl;
 import br.com.mksistemas.rna.ticket.criar.CriarTicketRequisicao;
 import br.com.mksistemas.rna.ticket.criar.CriarTicketResposta;
 import br.com.mksistemas.rna.ticket.criar.CriarTicketValidarRequisicaoImpl;
+import br.com.mksistemas.rna.ticket.criar.ICriarTicketPersistencia;
 
 @Configuration
 public class CriarTicketConfiguration {
@@ -47,8 +47,8 @@ public class CriarTicketConfiguration {
 
 	@Bean
 	@Scope("prototype")
-	public IExecutarRegraDeNegocio<CriarTicketContexto> getCriarTicketExecutarRegraDeNegocio() {
-		return new CriarTicketExecucaoRegraNegocioImpl();
+	public IExecutarRegraDeNegocio<CriarTicketContexto> getCriarTicketExecutarRegraDeNegocio(ICriarTicketPersistencia persistencia) {
+		return new CriarTicketExecucaoRegraNegocioImpl(persistencia);
 	}
 
 /*	@Bean

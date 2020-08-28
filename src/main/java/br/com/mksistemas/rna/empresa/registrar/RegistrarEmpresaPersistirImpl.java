@@ -5,11 +5,11 @@ import java.util.Optional;
 import br.com.mksistemas.base.negocio.RespostaRequisicao;
 import br.com.mksistemas.rna.fluxos.padrao.IPersistir;
 
-public class PersistirRegistroEmpresaImpl implements IPersistir<RegistrarEmpresaContexto> {
+public class RegistrarEmpresaPersistirImpl implements IPersistir<RegistrarEmpresaContexto> {
 
 	private final IRegistrarEmpresaPersistencia registrarEmpresaPersistencia;
 	
-	public  PersistirRegistroEmpresaImpl(final IRegistrarEmpresaPersistencia registrarEmpresaPersistencia) {
+	public  RegistrarEmpresaPersistirImpl(final IRegistrarEmpresaPersistencia registrarEmpresaPersistencia) {
 		this.registrarEmpresaPersistencia = registrarEmpresaPersistencia;
 	}
 	

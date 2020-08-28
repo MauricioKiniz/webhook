@@ -4,15 +4,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-import br.com.mksistemas.rna.empresa.registrar.CriacaoContextoRegistrarEmpresaImpl;
-import br.com.mksistemas.rna.empresa.registrar.ExecucaoRegrasDeNegocioImpl;
 import br.com.mksistemas.rna.empresa.registrar.IRegistrarEmpresaPersistencia;
-import br.com.mksistemas.rna.empresa.registrar.PersistirRegistroEmpresaImpl;
 import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaContexto;
+import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaCriarContextoImpl;
+import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaExecucaoRegrasDeNegocioImpl;
+import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaPersistirImpl;
 import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaRequisicao;
 import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaResposta;
+import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaValidarRequisicaoImpl;
 import br.com.mksistemas.rna.empresa.registrar.RetornarRespostaRegistrarEmpresaImpl;
-import br.com.mksistemas.rna.empresa.registrar.ValidarRequisicaoRegistrarEmpresaImpl;
 import br.com.mksistemas.rna.fluxos.padrao.FluxoRNAPadraoImpl;
 import br.com.mksistemas.rna.fluxos.padrao.ICriarContexto;
 import br.com.mksistemas.rna.fluxos.padrao.IExecutarRegraDeNegocio;
@@ -39,27 +39,27 @@ public class RegistrarEmpresaConfiguration {
 	@Bean
 	@Scope("prototype")
 	public IValidarRequisicao<RegistrarEmpresaRequisicao> getRegistrarEmpresaValidarRequisicao() {
-		return new ValidarRequisicaoRegistrarEmpresaImpl();
+		return new RegistrarEmpresaValidarRequisicaoImpl();
 	}
 
 	@Bean
 	@Scope("prototype")
 	public ICriarContexto<RegistrarEmpresaContexto, RegistrarEmpresaRequisicao> getRegistrarEmpresaCriarContexto() {
-		return new CriacaoContextoRegistrarEmpresaImpl();
+		return new RegistrarEmpresaCriarContextoImpl();
 	}
 
 	@Bean
 	@Scope("prototype")
 	public IExecutarRegraDeNegocio<RegistrarEmpresaContexto> getRegistrarEmpresaExecutarRegraDeNegocio(
 			IRegistrarEmpresaPersistencia persistencia) {
-		return new ExecucaoRegrasDeNegocioImpl(persistencia);
+		return new RegistrarEmpresaExecucaoRegrasDeNegocioImpl(persistencia);
 	}
 
 	@Bean
 	@Scope("prototype")
 	public IPersistir<RegistrarEmpresaContexto> getRegistrarEmpresaPersistir(
 			IRegistrarEmpresaPersistencia persistencia) {
-		return new PersistirRegistroEmpresaImpl(persistencia);
+		return new RegistrarEmpresaPersistirImpl(persistencia);
 	}
 
 	@Bean

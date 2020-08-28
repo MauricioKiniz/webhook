@@ -6,10 +6,10 @@ import br.com.mksistemas.base.negocio.MensagensDeResposta;
 import br.com.mksistemas.base.negocio.RespostaRequisicao;
 import br.com.mksistemas.rna.fluxos.padrao.IExecutarRegraDeNegocio;
 
-public class ExecucaoRegrasDeNegocioImpl implements IExecutarRegraDeNegocio<RegistrarEmpresaContexto> {
+public class RegistrarEmpresaExecucaoRegrasDeNegocioImpl implements IExecutarRegraDeNegocio<RegistrarEmpresaContexto> {
 	private final IRegistrarEmpresaPersistencia registrarEmpresaPersistencia;
 
-	public ExecucaoRegrasDeNegocioImpl(final IRegistrarEmpresaPersistencia registrarEmpresaPersistencia) {
+	public RegistrarEmpresaExecucaoRegrasDeNegocioImpl(final IRegistrarEmpresaPersistencia registrarEmpresaPersistencia) {
 		this.registrarEmpresaPersistencia = registrarEmpresaPersistencia;
 	}
 

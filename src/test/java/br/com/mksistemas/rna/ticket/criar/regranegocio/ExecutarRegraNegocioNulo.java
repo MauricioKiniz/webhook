@@ -1,15 +1,9 @@
 package br.com.mksistemas.rna.ticket.criar.regranegocio;
 
-import br.com.mksistemas.rna.ticket.criar.CriarTicketContexto;
-import br.com.mksistemas.rna.ticket.criar.CriarTicketRequisicao;
-import br.com.mksistemas.rna.ticket.criar.CriarTicketResposta;
-import br.com.mksistemas.rna.validacoes.ExecutarRegraNegocioBaseTest;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
-public class ExecutarRegraNegocioNulo extends 
-	ExecutarRegraNegocioBaseTest<CriarTicketRequisicao, CriarTicketResposta, CriarTicketContexto> {
+public class ExecutarRegraNegocioNulo extends CriarTicketExecutarRegraNegocioBase {
 
 	@Override
 	protected void when() {

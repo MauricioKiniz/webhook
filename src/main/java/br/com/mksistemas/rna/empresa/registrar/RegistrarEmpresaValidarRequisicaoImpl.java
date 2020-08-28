@@ -8,7 +8,7 @@ import br.com.mksistemas.functional.Trying;
 import br.com.mksistemas.rna.fluxos.padrao.IValidarRequisicao;
 import br.com.mksistemas.rne.tipos.Cnpj;
 
-public class ValidarRequisicaoRegistrarEmpresaImpl implements IValidarRequisicao<RegistrarEmpresaRequisicao> {
+public class RegistrarEmpresaValidarRequisicaoImpl implements IValidarRequisicao<RegistrarEmpresaRequisicao> {
 
 	@Override
 	public Optional<RespostaRequisicao> executar(RegistrarEmpresaRequisicao requisicao) {
