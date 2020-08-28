@@ -1,10 +1,14 @@
 package br.com.mksistemas.rna.ticket.criar.validar;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import br.com.mksistemas.rna.ticket.criar.CriarTicketContexto;
+import br.com.mksistemas.rna.ticket.criar.CriarTicketRequisicao;
+import br.com.mksistemas.rna.ticket.criar.CriarTicketResposta;
+import br.com.mksistemas.rna.validacoes.IVerificacoesPadroes;
+import br.com.mksistemas.rna.validacoes.ValidacaoRequisicaoBaseTest;
 
-import br.com.mksistemas.base.negocio.MensagensDeResposta;
-
-public class ValidarRequisicaoDescricaoInvalida extends ValidacaoBase {
+public class ValidarRequisicaoDescricaoInvalida 
+	extends ValidacaoRequisicaoBaseTest<CriarTicketRequisicao, CriarTicketResposta, CriarTicketContexto> 
+	implements IVerificacoesPadroes {
 
 	private String valor;
 
@@ -19,7 +23,7 @@ public class ValidarRequisicaoDescricaoInvalida extends ValidacaoBase {
 
 	@Override
 	protected void then() {
-		assertEquals(MensagensDeResposta.DescricaoInvalida.getCodigo(), respostaExecucao.get().getCodigo());
+		verificarRequisicaoDescricaoInvalida(respostaExecucao);
 	}
 
 }

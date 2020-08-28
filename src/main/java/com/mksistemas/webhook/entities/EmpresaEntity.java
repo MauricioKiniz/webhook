@@ -1,4 +1,4 @@
-package com.mksistemas.webhook.entities.empresa;
+package com.mksistemas.webhook.entities;
 
 import java.util.UUID;
 
@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Empresa {
+public class EmpresaEntity {
 	@Id
 	private UUID id;
 	private String Nome;

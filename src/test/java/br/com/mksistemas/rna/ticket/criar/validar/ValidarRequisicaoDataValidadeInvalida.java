@@ -5,8 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.time.LocalDate;
 
 import br.com.mksistemas.base.negocio.MensagensDeResposta;
+import br.com.mksistemas.rna.ticket.criar.CriarTicketContexto;
+import br.com.mksistemas.rna.ticket.criar.CriarTicketRequisicao;
+import br.com.mksistemas.rna.ticket.criar.CriarTicketResposta;
+import br.com.mksistemas.rna.validacoes.ValidacaoRequisicaoBaseTest;
 
-public class ValidarRequisicaoDataValidadeInvalida extends ValidacaoBase {
+public class ValidarRequisicaoDataValidadeInvalida 
+	extends ValidacaoRequisicaoBaseTest<CriarTicketRequisicao, CriarTicketResposta, CriarTicketContexto> {
 
 	private LocalDate valor;
 

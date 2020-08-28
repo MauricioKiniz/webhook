@@ -5,7 +5,7 @@ public abstract class TestBase {
 	protected abstract void setup();
 
 	protected abstract void execute();
-
+	
 	protected void finalize() {}
 
 	protected abstract void when();

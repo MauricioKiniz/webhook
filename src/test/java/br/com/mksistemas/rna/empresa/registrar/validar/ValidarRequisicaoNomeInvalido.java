@@ -1,13 +1,13 @@
-package br.com.mksistemas.rna.ticket.criar.validar;
+package br.com.mksistemas.rna.empresa.registrar.validar;
 
-import br.com.mksistemas.rna.ticket.criar.CriarTicketContexto;
-import br.com.mksistemas.rna.ticket.criar.CriarTicketRequisicao;
-import br.com.mksistemas.rna.ticket.criar.CriarTicketResposta;
+import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaContexto;
+import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaRequisicao;
+import br.com.mksistemas.rna.empresa.registrar.RegistrarEmpresaResposta;
 import br.com.mksistemas.rna.validacoes.IVerificacoesPadroes;
 import br.com.mksistemas.rna.validacoes.ValidacaoRequisicaoBaseTest;
 
 public class ValidarRequisicaoNomeInvalido 
-	extends ValidacaoRequisicaoBaseTest<CriarTicketRequisicao, CriarTicketResposta, CriarTicketContexto> 
+	extends ValidacaoRequisicaoBaseTest<RegistrarEmpresaRequisicao, RegistrarEmpresaResposta, RegistrarEmpresaContexto> 
 	implements IVerificacoesPadroes {
 
 	private String valor;

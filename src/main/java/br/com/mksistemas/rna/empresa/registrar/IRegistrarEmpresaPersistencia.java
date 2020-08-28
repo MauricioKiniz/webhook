@@ -6,5 +6,5 @@ import br.com.mksistemas.rne.empresa.Empresa;
 
 public interface IRegistrarEmpresaPersistencia {
 	public void registrarEmpresa(Empresa empresa);
-	public Boolean empresaExiste(UUID id);
+	public boolean empresaExiste(UUID id);
 }

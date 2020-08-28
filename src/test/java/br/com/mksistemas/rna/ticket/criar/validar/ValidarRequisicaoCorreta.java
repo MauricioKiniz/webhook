@@ -1,10 +1,14 @@
 package br.com.mksistemas.rna.ticket.criar.validar;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import br.com.mksistemas.rna.ticket.criar.CriarTicketContexto;
+import br.com.mksistemas.rna.ticket.criar.CriarTicketRequisicao;
+import br.com.mksistemas.rna.ticket.criar.CriarTicketResposta;
+import br.com.mksistemas.rna.validacoes.IVerificacoesPadroes;
+import br.com.mksistemas.rna.validacoes.ValidacaoRequisicaoBaseTest;
 
-import java.util.Optional;
-
-public class ValidarRequisicaoCorreta extends ValidacaoBase {
+public class ValidarRequisicaoCorreta 
+	extends ValidacaoRequisicaoBaseTest<CriarTicketRequisicao, CriarTicketResposta, CriarTicketContexto> 
+	implements IVerificacoesPadroes {
 
 	@Override
 	protected void when() {
@@ -12,7 +16,7 @@ public class ValidarRequisicaoCorreta extends ValidacaoBase {
 
 	@Override
 	protected void then() {
-		assertEquals(Optional.empty(), respostaExecucao);
+		verificarRequisicaoCorreta(respostaExecucao);
 	}
 
 }

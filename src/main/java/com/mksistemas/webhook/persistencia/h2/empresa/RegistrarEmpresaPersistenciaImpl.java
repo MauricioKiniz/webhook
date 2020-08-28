@@ -2,7 +2,7 @@ package com.mksistemas.webhook.persistencia.h2.empresa;
 
 import java.util.UUID;
 
-import com.mksistemas.webhook.entities.empresa.Empresa;
+import com.mksistemas.webhook.entities.EmpresaEntity;
 import com.mksistemas.webhook.persistencia.repositories.IEmpresaRepositorio;
 
 import br.com.mksistemas.rna.empresa.registrar.IRegistrarEmpresaPersistencia;
@@ -19,7 +19,7 @@ public class RegistrarEmpresaPersistenciaImpl implements IRegistrarEmpresaPersis
 	@Override
 	public void registrarEmpresa(
 			br.com.mksistemas.rne.empresa.Empresa empresaEntidade ) {
-			Empresa empresa = new Empresa();
+			EmpresaEntity empresa = new EmpresaEntity();
 			empresa.setId(empresaEntidade.getId());
 			empresa.setNome(empresaEntidade.getNome());
 			empresa.setCnpj(empresaEntidade.getCnpj().getNumeroCnpj());
@@ -27,7 +27,7 @@ public class RegistrarEmpresaPersistenciaImpl implements IRegistrarEmpresaPersis
 	}
 
 	@Override
-	public Boolean empresaExiste(UUID id) {
+	public boolean empresaExiste(UUID id) {
 		return repositorio.existsById(id);
 	}
 

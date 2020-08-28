@@ -12,7 +12,7 @@ import br.com.mksistemas.rna.extensoes.IValidarRequisicaNomeInvalido;
 import br.com.mksistemas.rna.extensoes.IValidarRequisicaoNula;
 import br.com.mksistemas.rna.fluxos.padrao.IValidarRequisicao;
 
-public class ValidarRequisicaoCriacaoTicketImpl implements 
+public class CriarTicketValidarRequisicaoImpl implements 
 	IValidarRequisicao<CriarTicketRequisicao>,
 	IValidarRequisicaoNula<CriarTicketRequisicao>,
 	IValidarRequisicaIdentificadorInvalido<CriarTicketRequisicao>,
