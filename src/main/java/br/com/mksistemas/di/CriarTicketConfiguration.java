@@ -14,6 +14,7 @@ import br.com.mksistemas.rna.fluxos.padrao.IValidarRequisicao;
 import br.com.mksistemas.rna.ticket.criar.CriarTicketContexto;
 import br.com.mksistemas.rna.ticket.criar.CriarTicketCriarContextoImpl;
 import br.com.mksistemas.rna.ticket.criar.CriarTicketExecucaoRegraNegocioImpl;
+import br.com.mksistemas.rna.ticket.criar.CriarTicketPersistirImpl;
 import br.com.mksistemas.rna.ticket.criar.CriarTicketRequisicao;
 import br.com.mksistemas.rna.ticket.criar.CriarTicketResposta;
 import br.com.mksistemas.rna.ticket.criar.CriarTicketValidarRequisicaoImpl;
@@ -51,14 +52,14 @@ public class CriarTicketConfiguration {
 		return new CriarTicketExecucaoRegraNegocioImpl(persistencia);
 	}
 
-/*	@Bean
+	@Bean
 	@Scope("prototype")
-	public IPersistir<CriarTicketContexto> getRegistrarEmpresaPersistir(
-			IRegistrarEmpresaPersistencia persistencia) {
-		return new PersistirRegistroEmpresaImpl(persistencia);
+	public IPersistir<CriarTicketContexto> getCriarTicketPersistir(
+			ICriarTicketPersistencia persistencia) {
+		return new CriarTicketPersistirImpl(persistencia);
 	}
 
-	@Bean
+/*	@Bean
 	@Scope("prototype")
 	public IRetornarResposta<CriarTicketContexto, CriarTicketResposta, CriarTicketRequisicao> getRegistrarEmpresaRetornarResposta() {
 		return new RetornarRespostaRegistrarEmpresaImpl();

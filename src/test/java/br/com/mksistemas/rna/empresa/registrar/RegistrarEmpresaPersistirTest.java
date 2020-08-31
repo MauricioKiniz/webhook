@@ -11,7 +11,7 @@ import org.mockito.Mockito;
 import br.com.mksistemas.di.RegistrarEmpresaConfiguration;
 import br.com.mksistemas.rna.fluxos.padrao.IPersistir;
 
-class PersistirRegistroEmpresaTest extends RegistrarEmpresaBaseTest {
+class RegistrarEmpresaPersistirTest extends RegistrarEmpresaBaseTest {
 
 	private IRegistrarEmpresaPersistencia persistenciaMock;
 	private IPersistir<RegistrarEmpresaContexto> persistirRegistroEmpresa;

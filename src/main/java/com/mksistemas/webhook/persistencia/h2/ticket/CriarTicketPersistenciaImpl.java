@@ -5,10 +5,12 @@ import java.util.UUID;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import com.mksistemas.webhook.entities.TicketEntity;
 import com.mksistemas.webhook.persistencia.repositories.IEmpresaRepositorio;
 import com.mksistemas.webhook.persistencia.repositories.ITicketRepositorio;
 
 import br.com.mksistemas.rna.ticket.criar.ICriarTicketPersistencia;
+import br.com.mksistemas.rne.ticket.Ticket;
 
 public class CriarTicketPersistenciaImpl implements ICriarTicketPersistencia {
 
@@ -37,6 +39,18 @@ public class CriarTicketPersistenciaImpl implements ICriarTicketPersistencia {
 		query.setParameter("id", empresaId);
 		query.setParameter("nome", nome);
 		return query.getResultStream().findFirst().isPresent();
+	}
+
+	@Override
+	public UUID SalvarTicket(Ticket ticket) {
+		var ticketEntity = new TicketEntity();
+		ticketEntity.setId(UUID.randomUUID());
+		ticketEntity.setNome(ticket.getNome());
+		ticketEntity.setDescricao(ticket.getDescricao());
+		ticketEntity.setEmpresaId(ticket.getEmpresaId());
+		ticketEntity.setDataValidade(ticket.getDataValidade());
+		ticketRepositorio.save(ticketEntity);
+		return ticketEntity.getId();
 	}
 
 }

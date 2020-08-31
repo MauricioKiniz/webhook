@@ -12,7 +12,7 @@ import br.com.mksistemas.base.negocio.MensagensDeResposta;
 import br.com.mksistemas.di.RegistrarEmpresaConfiguration;
 import br.com.mksistemas.rna.fluxos.padrao.IExecutarRegraDeNegocio;
 
-class ExecucaoRegrasDeNegocioTest extends RegistrarEmpresaBaseTest {
+class RegistrarEmpresaExecucaoRegrasDeNegocioTest extends RegistrarEmpresaBaseTest {
 
 	private IRegistrarEmpresaPersistencia persistenciaMock;
 	private IExecutarRegraDeNegocio<RegistrarEmpresaContexto> execucaoRegras;

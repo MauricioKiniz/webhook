@@ -1,4 +1,4 @@
-package br.com.mksistemas.rna.ticket.criar.contexto;
+package br.com.mksistemas.rna.ticket.criar;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -8,11 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import br.com.mksistemas.di.CriarTicketConfiguration;
 import br.com.mksistemas.rna.fluxos.padrao.ICriarContexto;
-import br.com.mksistemas.rna.ticket.criar.CriarTicketContexto;
-import br.com.mksistemas.rna.ticket.criar.CriarTicketDefaults;
-import br.com.mksistemas.rna.ticket.criar.CriarTicketRequisicao;
 
-class CriarContextoTicketTest {
+class CriarTicketCriarContextoTest {
 
 	private ICriarContexto<CriarTicketContexto, CriarTicketRequisicao> criacaoContexto;
 	private CriarTicketRequisicao requisicao;

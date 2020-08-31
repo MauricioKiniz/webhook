@@ -27,6 +27,8 @@ public class CriarTicketDefaults implements ICriacaoDefaults<CriarTicketRequisic
 	}
 
 	public CriarTicketContexto getContextoDefault() {
+		if (requisicao == null)
+			getRequisicaoDefault();
 		return new CriarTicketContexto(requisicao);
 	}
 

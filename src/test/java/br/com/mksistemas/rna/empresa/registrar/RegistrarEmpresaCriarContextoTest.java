@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import br.com.mksistemas.di.RegistrarEmpresaConfiguration;
 import br.com.mksistemas.rna.fluxos.padrao.ICriarContexto;
 
-class CriacaoContextoRegistrarEmpresaTest extends RegistrarEmpresaBaseTest {
+class RegistrarEmpresaCriarContextoTest extends RegistrarEmpresaBaseTest {
 
 	private ICriarContexto<RegistrarEmpresaContexto, RegistrarEmpresaRequisicao> criacaoContexto;
 
