@@ -1,7 +1,6 @@
 package br.com.mksistemas.rna.ticket.criar;
 
 import java.util.Optional;
-import java.util.UUID;
 
 import br.com.mksistemas.base.negocio.RespostaRequisicao;
 import br.com.mksistemas.rna.fluxos.padrao.IPersistir;
